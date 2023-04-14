@@ -19,4 +19,5 @@ export enum Color {
   backgroundColor = "#D9D9D9",
   backgroundColor2 = "#F1F6FB",
   backgroundColor3 = "#F6FCFF",
+  grayBgColor = "#f7f8f9",
 }
