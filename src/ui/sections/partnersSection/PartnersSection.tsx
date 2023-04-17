@@ -26,8 +26,8 @@ export const PartnersSection = () => {
       </Stack>
       <div css={sx.swiperWrap}>
         <Swiper
-          autoplay={{ delay: 0 }}
-          speed={6000}
+          // autoplay={{ delay: 0 }}
+          // speed={6000}
           slidesPerView={6}
           loop={true}
           spaceBetween={90}

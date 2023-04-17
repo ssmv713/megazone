@@ -1,9 +1,17 @@
 import { Header } from "@/common/components/header";
 import { Stack } from "@mui/material";
-import { Main } from "../sections/main/Main";
+
 import { css } from "@emotion/react";
-import { SwiperSection } from "../sections/SwiperSection/SwiperSection";
-import { PartnersSection } from "../sections/partnersSection/PartnersSection";
+
+import {
+  BannerSection,
+  ChangeSection,
+  Footer,
+  Main,
+  NewsSection,
+  PartnersSection,
+  SwiperSection,
+} from "../sections";
 
 export const LandingView = () => {
   return (
@@ -12,13 +20,17 @@ export const LandingView = () => {
       <Main />
       <SwiperSection />
       <PartnersSection />
+      <ChangeSection />
+      <NewsSection />
+      <BannerSection />
+      <Footer />
     </Stack>
   );
 };
 
 const sx = {
   root: css`
-    position: relative;
+    /* position: relative; */
     overflow-x: hidden;
   `,
 };

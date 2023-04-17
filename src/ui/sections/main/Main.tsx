@@ -33,6 +33,7 @@ const sx = {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     /* overflow: hidden; */
     @media ${Mq.lg} {
       padding: 0 30px;

@@ -93,6 +93,9 @@ const arrow = {
     width: 110px;
     height: 65px;
     background-repeat: no-repeat;
+    &:hover {
+      background-image: url(/assets/icons/arrow_right_blue.png);
+    }
     &::after {
       display: none;
     }
@@ -111,6 +114,18 @@ const sx = {
     .swiper-button-prev {
       ${arrow.base}
       transform: scaleX(-1) translateX(1vw);
+    }
+    .swiper-pagination {
+      left: 13% !important;
+      bottom: 0 !important;
+    }
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+    }
+    .swiper-pagination-bullet-active {
+      width: 30px;
+      border-radius: 19px;
     }
   `,
   image: css`
