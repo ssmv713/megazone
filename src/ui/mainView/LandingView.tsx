@@ -3,6 +3,7 @@ import { Stack } from "@mui/material";
 import { Main } from "../sections/main/Main";
 import { css } from "@emotion/react";
 import { SwiperSection } from "../sections/SwiperSection/SwiperSection";
+import { PartnersSection } from "../sections/partnersSection/PartnersSection";
 
 export const LandingView = () => {
   return (
@@ -10,6 +11,7 @@ export const LandingView = () => {
       <Header />
       <Main />
       <SwiperSection />
+      <PartnersSection />
     </Stack>
   );
 };
