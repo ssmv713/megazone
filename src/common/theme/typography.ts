@@ -1,7 +1,7 @@
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 
 export const baseTypographyOptions: TypographyOptions = {
-  fontFamily: "Pretendard-Regular",
+  fontFamily: "pretendard, sans-serif",
   allVariants: {
     whiteSpace: "pre-wrap",
   },
@@ -24,13 +24,18 @@ export const baseTypographyOptions: TypographyOptions = {
     fontSize: "28px", //60
     fontWeight: "400",
   },
-  h5: {
+  // h5: {
+  //   fontSize: "24px",
+  // },
+  // h6: {
+  //   fontSize: "28px",
+  // },
+  subtitle1: {
     fontSize: "24px",
+    "@media (max-width:1024px)": {
+      fontSize: "15px !important",
+    },
   },
-  h6: {
-    fontSize: "28px",
-  },
-  subtitle1: { fontSize: "24px" },
   body1: {
     fontSize: "20px", //60
     fontWeight: "400",
