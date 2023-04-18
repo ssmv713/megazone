@@ -1,25 +1,38 @@
 import { Color } from "@/common/theme/colors";
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 import { Stack, Typography } from "@mui/material";
 
 import Image from "next/image";
 import { techModels } from "./models/techModels";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import styled from "@emotion/styled";
 
 export const ChangeSection = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
   useEffect(() => {
-    AOS.init();
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+      console.log(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
   return (
     <div css={sx.root}>
-      <iframe
+      <video autoPlay muted loop css={sx.bg}>
+        <source src="/assets/video/blue_bg.mp4" type="video/mp4" />
+      </video>
+      {/* <iframe
         css={sx.bg}
         src="https://player.vimeo.com/video/782821565?h=370b6b74e6&badge=0&autopause=0&player_id=0&app_id=58479%22&autoplay=1&loop=1&title=0&background=1"
         allow="autoplay; fullscreen"
         allowFullScreen
-      ></iframe>
+      ></iframe> */}
       <Stack css={sx.inner}>
         <Typography color={Color.blueText}>전환주도</Typography>
         <Typography
@@ -37,12 +50,16 @@ export const ChangeSection = () => {
         <Stack direction="row" justifyContent="space-between">
           {techModels.map((it, index) => (
             <Stack key={index}>
-              <Image
-                src={it.img}
-                alt="tech"
-                width={it.width}
-                height={it.height}
-              />
+              <div css={sx.imgWrap(it.width, it.height, it.delay)}>
+                <Image
+                  src={it.img}
+                  alt="tech"
+                  width={it.width}
+                  height={it.height}
+                  className={scrollPosition > 2100 ? "fade-up" : "fade"}
+                />
+              </div>
+
               <Typography mt="20px" color="#ddd" variant="body2">
                 {it.text}
               </Typography>
@@ -68,9 +85,40 @@ const sx = {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 56.25vw;
+    width: 123vw;
+    min-width: 177.77vh;
+    min-height: 128vh;
     z-index: -1;
-    min-height: 100%;
+  `,
+  imgWrap: (width: number, height: number, delay: string) => css`
+    width: ${width}px;
+    height: ${height}px;
+    overflow: hidden;
+    & .fade {
+      transform: translateY(150px);
+      opacity: 0;
+transition: 1s all ease;
+    }
+    & .fade-up {
+    
+      transition: all 0.6s ease;
+      animation-name: fadeUp;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+      animation-delay: ${delay};
+      opacity: 1;
+    }
+    @keyframes fadeUp{     
+      from{
+        transform: translateY(150px);
+        /* opacity: 0; */
+      }
+      to{
+          transform:translateY(0);
+          /* opacity: 1; */
+         
+      }
+    },
   `,
 };

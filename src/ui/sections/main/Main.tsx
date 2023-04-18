@@ -13,12 +13,20 @@ export const Main = () => {
 
   return (
     <div css={sx.root}>
-      <iframe
+      <video
+        css={sx.video}
+        src="/assets/video/office.mp4"
+        autoPlay
+        loop
+        muted
+      ></video>
+      {/* <iframe
         css={sx.video}
         src="https://player.vimeo.com/video/746739996?autoplay=1&loop=1&title=0&background=1"
         allow="autoplay; fullscreen"
         allowFullScreen
-      ></iframe>
+      ></iframe> */}
+      <div css={sx.shadow}></div>
       <Typography color={Color.WhiteText} variant="h1" css={sx.title}>
         {isLarge ? title.tablet : title.pc}
       </Typography>
@@ -49,7 +57,16 @@ const sx = {
     min-width: 177.77vh;
     min-height: 100vh;
   `,
-
+  shadow: css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 56.25vw;
+    min-width: 177.77vh;
+    min-height: 100vh;
+    background-color: #05050540;
+  `,
   title: css`
     position: relative;
     z-index: 5;

@@ -16,7 +16,7 @@ export const Footer = () => {
 const sx = {
   root: css`
     background: ${Color.BlackText};
-    padding: 120px;
+    padding: 120px 0;
   `,
   inner: css`
     width: 1430px;

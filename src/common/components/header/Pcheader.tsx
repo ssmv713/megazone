@@ -19,7 +19,7 @@ export const PcHeader = () => {
     <Stack
       direction="row"
       css={sx.root}
-      className={scrollPosition > 5 ? "scrolled" : ""}
+      className={scrollPosition > 100 ? "scrolled" : ""}
     >
       <Image
         src={scrollPosition > 1 ? logoBlack : logo_whiite}
@@ -48,17 +48,33 @@ export const PcHeader = () => {
 
 const sx = {
   root: css`
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 55;
     padding: 20px 60px;
+    height: 120px;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     &.scrolled {
       background-color: #fff;
+      position: fixed;
+      height: 80px;
+      animation-name: grow;
+      animation-duration: 0.6s;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
       & p {
         color: #000;
+      }
+    }
+    @keyframes grow {
+      from {
+        top: -64px;
+      }
+      to {
+        top: 0;
       }
     }
   `,

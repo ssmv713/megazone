@@ -4,8 +4,32 @@ import tech3 from "@/assets/images/tech3.png";
 import tech4 from "@/assets/images/tech4.png";
 
 export const techModels = [
-  { img: tech1, width: 312.5, height: 500, text: "데이터 이노베이션" },
-  { img: tech2, width: 312.5, height: 419, text: "클라우드 네이티브" },
-  { img: tech3, width: 312.5, height: 500, text: "디지털 플랫폼&이커머스" },
-  { img: tech4, width: 312.5, height: 419, text: "인텔리전스 프로덕트" },
+  {
+    img: tech1,
+    width: 312.5,
+    height: 500,
+    text: "데이터 이노베이션",
+    delay: "0.1s",
+  },
+  {
+    img: tech2,
+    width: 312.5,
+    height: 419,
+    text: "클라우드 네이티브",
+    delay: "0.2s",
+  },
+  {
+    img: tech3,
+    width: 312.5,
+    height: 500,
+    text: "디지털 플랫폼&이커머스",
+    delay: "0.3s",
+  },
+  {
+    img: tech4,
+    width: 312.5,
+    height: 419,
+    text: "인텔리전스 프로덕트",
+    delay: "0.4s",
+  },
 ];

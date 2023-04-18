@@ -69,7 +69,7 @@ const sx = {
       transition: all 1s;
     }
     .swiper-slide {
-      width: fit-content !important;
+      /* width: fit-content !important; */
     }
   `,
 };
