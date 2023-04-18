@@ -94,10 +94,13 @@ const sx = {
     width: ${width}px;
     height: ${height}px;
     overflow: hidden;
+    & :hover img{     
+      transform: scale(1.25);          
+    }
     & .fade {
-      transform: translateY(150px);
+      /* transform: translateY(150px); */
       opacity: 0;
-transition: 1s all ease;
+      transition: 1s all ease;
     }
     & .fade-up {
     
@@ -108,6 +111,7 @@ transition: 1s all ease;
       animation-fill-mode: forwards;
       animation-delay: ${delay};
       opacity: 1;
+     
     }
     @keyframes fadeUp{     
       from{
