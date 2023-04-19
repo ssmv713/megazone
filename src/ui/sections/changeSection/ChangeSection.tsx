@@ -8,6 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
+import { Mq, useCustomMediaQuery } from "@/common/theme/screen";
 
 export const ChangeSection = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -21,7 +22,12 @@ export const ChangeSection = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  const { isSmall } = useCustomMediaQuery();
+  const title = {
+    pc: "메가존.디지털은\n클라우드,데이터,디지털 분량의 네이티브로서\n비즈니스 디지털 전환을 주도합니다.",
+    mobile:
+      "메가존.디지털은 클라우드,데이터,디지털\n분량의 네이티브로서 비즈니스 디지털\n전환을 주도합니다.",
+  };
   return (
     <div css={sx.root}>
       <video autoPlay muted loop css={sx.bg}>
@@ -43,23 +49,39 @@ export const ChangeSection = () => {
           mb="40px"
           //   data-aos="fade-up"
         >
-          {
-            "메가존.디지털은\n클라우드,데이터,디지털 분랴의 네이티브로서\n비즈니스 디지털 전환을 주도합니다."
-          }
+          {isSmall ? title.mobile : title.pc}
         </Typography>
         <Stack direction="row" justifyContent="space-between">
           {techModels.map((it, index) => (
             <Stack key={index}>
-              <div css={sx.imgWrap(it.width, it.height, it.delay)}>
-                <Image
-                  src={it.img}
-                  alt="tech"
-                  width={it.width}
-                  height={it.height}
-                  className={scrollPosition > 2100 ? "fade-up" : "fade"}
-                />
+              <div css={sx.imageOuter}>
+                <div
+                  css={sx.imgWrap(
+                    it.width,
+                    it.height,
+                    it.delay,
+                    it.aspectRatio
+                  )}
+                >
+                  {isSmall ? (
+                    <Image
+                      src={it.img}
+                      alt="tech"
+                      fill
+                      sizes="100"
+                      className={scrollPosition > 2100 ? "fade-up" : "fade"}
+                    />
+                  ) : (
+                    <Image
+                      src={it.img}
+                      alt="tech"
+                      width={it.width}
+                      height={it.height}
+                      className={scrollPosition > 2100 ? "fade-up" : "fade"}
+                    />
+                  )}
+                </div>
               </div>
-
               <Typography mt="20px" color="#ddd" variant="body2">
                 {it.text}
               </Typography>
@@ -79,7 +101,12 @@ const sx = {
   inner: css`
     max-width: 1430px;
     margin: 0 auto;
-    padding: 180px 0 170px 0;
+    padding: 140px 0 170px 0;
+    @media ${Mq.sm} {
+      width: 100%;
+      padding: 100px 0;
+      margin: 0 30px;
+    }
   `,
   bg: css`
     position: absolute;
@@ -87,23 +114,43 @@ const sx = {
     left: 0;
     width: 123vw;
     min-width: 177.77vh;
-    min-height: 128vh;
+    min-height: 115vh;
     z-index: -1;
   `,
-  imgWrap: (width: number, height: number, delay: string) => css`
+  imageOuter: css`
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+    @media ${Mq.sm} {
+      width: 20%;
+      height: auto;
+    }
+  `,
+  imgWrap: (
+    width: number,
+    height: number,
+    delay: string,
+    aspectRatio: string
+  ) => css`
     width: ${width}px;
     height: ${height}px;
     overflow: hidden;
-    & :hover img{     
-      transform: scale(1.25);          
+    transition: all 1s;
+    @media ${Mq.sm} {
+      width: 100%;
+      height: auto;
+      aspect-ratio : ${aspectRatio};
+      position: relative;
+    }
+    &:hover {
+      transform: scale(1.15);
     }
     & .fade {
-      /* transform: translateY(150px); */
+     
       opacity: 0;
       transition: 1s all ease;
     }
-    & .fade-up {
-    
+    & .fade-up {    
       transition: all 0.6s ease;
       animation-name: fadeUp;
       animation-duration: 1s;
@@ -116,11 +163,11 @@ const sx = {
     @keyframes fadeUp{     
       from{
         transform: translateY(150px);
-        /* opacity: 0; */
+       
       }
       to{
           transform:translateY(0);
-          /* opacity: 1; */
+         
          
       }
     },

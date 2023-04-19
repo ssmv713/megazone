@@ -1,5 +1,5 @@
 import { Color } from "@/common/theme/colors";
-import { useCustomMediaQuery } from "@/common/theme/screen";
+import { Mq, useCustomMediaQuery } from "@/common/theme/screen";
 import { Button, Stack, Typography } from "@mui/material";
 import { css } from "@emotion/react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,7 +22,7 @@ export const SwiperSection = () => {
     subTablet:
       "우리 모두의 삶을 변화 시키는 주변의 모든 디지털 서비스에 대해 메가존.디지털은 기업의 비즈니스 혁신과 성장을 위해 오늘도 진심으로 고민합니다.",
   };
-
+  const { isSmall } = useCustomMediaQuery();
   return (
     <Stack css={sx.root}>
       <Typography color={Color.BlackText} variant="h1" mb="28px">
@@ -35,7 +35,7 @@ export const SwiperSection = () => {
       <div>
         <Swiper
           loop={true}
-          slidesPerView={1.5}
+          slidesPerView={isSmall ? 1 : 1.5}
           spaceBetween={50}
           pagination={{
             clickable: true,
@@ -66,9 +66,16 @@ export const SwiperSection = () => {
                     </div>
                   )}
                 </div>
-                <Stack direction="row" mt="28px" alignItems="center" gap="20px">
+                <Stack
+                  css={sx.swiperBottom}
+                  direction="row"
+                  mt="28px"
+                  alignItems="center"
+                  gap="20px"
+                >
                   <Button css={sx.btn}>레퍼런스</Button>
                   <Typography
+                    mb="40px"
                     css={sx.swiperText}
                     variant="subtitle1"
                     color={Color.Black}
@@ -107,17 +114,31 @@ const sx = {
     margin-top: 200px;
     margin-bottom: 200px;
     margin-left: 12.76%;
+    @media ${Mq.sm} {
+      margin: 100px 0;
+      padding: 0 30px;
+    }
     .swiper-button-next {
       right: 25%;
       ${arrow.base}
+      @media ${Mq.sm} {
+        display: none;
+      }
     }
     .swiper-button-prev {
       ${arrow.base}
       transform: scaleX(-1) translateX(1vw);
+      @media ${Mq.sm} {
+        display: none;
+      }
     }
     .swiper-pagination {
       left: 13% !important;
       bottom: 0 !important;
+      @media ${Mq.sm} {
+        left: 0 !important;
+        display: flex;
+      }
     }
     .swiper-pagination-bullet {
       width: 12px;
@@ -134,6 +155,9 @@ const sx = {
     aspect-ratio: 1 / 0.562;
     filter: drop-shadow(20px 30px 20px rgba(0, 0, 0, 0.1));
     overflow: hidden;
+    @media ${Mq.sm} {
+      filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.1));
+    }
   `,
   insideImage: css`
     transition: 0.6s;
@@ -145,6 +169,12 @@ const sx = {
     position: absolute;
     top: 80px;
     left: 80px;
+  `,
+  swiperBottom: css`
+    @media ${Mq.sm} {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   `,
   btn: css`
     min-width: 112px;

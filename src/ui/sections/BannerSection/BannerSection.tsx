@@ -25,7 +25,7 @@ export const BannerSection = () => {
                 className="mySwiper"
                 loop={true}
                 autoplay={{
-                  delay: 2500,
+                  delay: 3000,
                   disableOnInteraction: false,
                 }}
                 modules={[Autoplay]}
@@ -73,8 +73,15 @@ const sx = {
     background-size: cover;
     display: flex;
     align-items: center;
+    .swiper {
+      height: 100px;
+    }
     .swiper-slide {
       height: 100px !important;
+    }
+    .swiper-wrapper {
+      transition-duration: 0.6s !important;
+      transition-timing-function: linear;
     }
   `,
   inner: css`

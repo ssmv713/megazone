@@ -10,6 +10,7 @@ export const techModels = [
     height: 500,
     text: "데이터 이노베이션",
     delay: "0.1s",
+    aspectRatio: "1/1.547",
   },
   {
     img: tech2,
@@ -17,6 +18,7 @@ export const techModels = [
     height: 419,
     text: "클라우드 네이티브",
     delay: "0.2s",
+    aspectRatio: "1/1.316",
   },
   {
     img: tech3,
@@ -24,6 +26,7 @@ export const techModels = [
     height: 500,
     text: "디지털 플랫폼&이커머스",
     delay: "0.3s",
+    aspectRatio: "1/1.547",
   },
   {
     img: tech4,
@@ -31,5 +34,6 @@ export const techModels = [
     height: 419,
     text: "인텔리전스 프로덕트",
     delay: "0.4s",
+    aspectRatio: "1/1.316",
   },
 ];

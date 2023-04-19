@@ -6,9 +6,13 @@ import "swiper/css";
 import { partnersModels } from "./models/partnersModels";
 import Image from "next/image";
 import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper";
+import { Autoplay } from "swiper";
+import { Mq, useCustomMediaQuery } from "@/common/theme/screen";
+import { MobileSlide } from "./components/MobileSlide";
+import { PcSlide } from "./components/PcSlide";
 
 export const PartnersSection = () => {
+  const { isSmall } = useCustomMediaQuery();
   return (
     <Stack css={sx.root}>
       <Stack css={sx.textWrap}>
@@ -24,31 +28,7 @@ export const PartnersSection = () => {
           }
         </Typography>
       </Stack>
-      <div css={sx.swiperWrap}>
-        <Swiper
-          // autoplay={{ delay: 0 }}
-          // speed={6000}
-          slidesPerView={6}
-          loop={true}
-          spaceBetween={90}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination, Autoplay]}
-          className="mySwiper"
-        >
-          {partnersModels.map((it, index) => (
-            <SwiperSlide key={index}>
-              <Image
-                src={it.img}
-                alt={"it.img"}
-                width={it.width}
-                height={it.height}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      <div css={sx.swiperWrap}>{isSmall ? <MobileSlide /> : <PcSlide />}</div>
     </Stack>
   );
 };
@@ -57,19 +37,17 @@ const sx = {
   root: css`
     background-color: ${Color.grayBgColor};
     padding: 130px 0;
+    @media ${Mq.sm} {
+      padding: 100px 0;
+    }
   `,
   textWrap: css`
     margin-left: 12.76%;
+    @media ${Mq.sm} {
+      margin: 0 30px;
+    }
   `,
   swiperWrap: css`
     margin-top: 80px;
-    .swiper-wrapper {
-      align-items: center;
-      transition-timing-function: linear;
-      transition: all 1s;
-    }
-    .swiper-slide {
-      /* width: fit-content !important; */
-    }
   `,
 };
