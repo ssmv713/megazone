@@ -12,18 +12,24 @@ import {
   PartnersSection,
   SwiperSection,
 } from "../sections";
+import { ScrollToTop } from "@/common/components/scrollToTop/ScrollToTop";
+import { ChangeTest } from "../sections/changeSection/ChangeTest";
+import { useCustomMediaQuery } from "@/common/theme/screen";
 
 export const LandingView = () => {
+  const { isLaptop } = useCustomMediaQuery();
   return (
     <Stack css={sx.root}>
       <Header />
       <Main />
       <SwiperSection />
       <PartnersSection />
-      <ChangeSection />
+      {isLaptop ? <ChangeTest /> : <ChangeSection />}
+
       <NewsSection />
       <BannerSection />
       <Footer />
+      <ScrollToTop />
     </Stack>
   );
 };

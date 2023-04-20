@@ -28,8 +28,7 @@ export const MobileHeader = () => {
       <MobileMenu open={open} onClose={handleClickClose} />
       <Stack
         direction="row"
-        css={sx.root}
-        className={scrollPosition > 100 ? "scrolled" : ""}
+        css={[sx.root, scrollPosition > 100 && sx.scrolled]}
       >
         <Image
           src={scrolled ? logoBlack : logo_white}
@@ -37,7 +36,11 @@ export const MobileHeader = () => {
           width="126"
           height="32"
         />
-        <MobileMenuIcon scrolled={scrolled} onClick={handleClickOpen} />
+        <MobileMenuIcon
+          scrolled={scrolled}
+          onClick={handleClickOpen}
+          open={open}
+        />
       </Stack>
     </>
   );
@@ -45,25 +48,19 @@ export const MobileHeader = () => {
 
 const sx = {
   root: css`
-    z-index: 55;
+    width: 100%;
     height: 104px;
+
     align-items: center;
-    padding: 0 18px;
     justify-content: space-between;
+
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    &.scrolled {
-      background-color: #fff;
-      position: fixed;
-      height: 80px;
-      animation-name: grow;
-      animation-duration: 0.6s;
-      animation-timing-function: ease-out;
-      animation-fill-mode: forwards;
-      height: 60px;
-    }
+    z-index: 55;
+
+    padding: 0 18px;
+
     @keyframes grow {
       from {
         top: -64px;
@@ -72,5 +69,19 @@ const sx = {
         top: 0;
       }
     }
+  `,
+
+  // 스크롤이 됐을 때, 툴바 스타일
+  scrolled: css`
+    background-color: #fff;
+
+    position: fixed;
+
+    height: 60px;
+
+    animation-name: grow;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
   `,
 };

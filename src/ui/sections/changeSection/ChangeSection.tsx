@@ -22,7 +22,7 @@ export const ChangeSection = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const { isSmall } = useCustomMediaQuery();
+  const { isSmall, isLaptop } = useCustomMediaQuery();
   const title = {
     pc: "메가존.디지털은\n클라우드,데이터,디지털 분량의 네이티브로서\n비즈니스 디지털 전환을 주도합니다.",
     mobile:
@@ -30,9 +30,11 @@ export const ChangeSection = () => {
   };
   return (
     <div css={sx.root}>
-      <video autoPlay muted loop css={sx.bg}>
-        <source src="/assets/video/blue_bg.mp4" type="video/mp4" />
-      </video>
+      <div css={sx.bg}>
+        <video autoPlay muted loop css={sx.bg}>
+          <source src="/assets/video/blue_bg.mp4" type="video/mp4" />
+        </video>
+      </div>
       {/* <iframe
         css={sx.bg}
         src="https://player.vimeo.com/video/782821565?h=370b6b74e6&badge=0&autopause=0&player_id=0&app_id=58479%22&autoplay=1&loop=1&title=0&background=1"
@@ -62,8 +64,9 @@ export const ChangeSection = () => {
                     it.delay,
                     it.aspectRatio
                   )}
+                  className={isLaptop ? "LaptopImagWrap" : ""}
                 >
-                  {isSmall ? (
+                  {isLaptop ? (
                     <Image
                       src={it.img}
                       alt="tech"
@@ -97,12 +100,13 @@ const sx = {
   root: css`
     width: 100%;
     position: relative;
+    height: 120vh;
   `,
   inner: css`
     max-width: 1430px;
     margin: 0 auto;
     padding: 140px 0 170px 0;
-    @media ${Mq.sm} {
+    @media ${Mq.xxl} {
       width: 100%;
       padding: 100px 0;
       margin: 0 30px;
@@ -112,17 +116,15 @@ const sx = {
     position: absolute;
     top: 0;
     left: 0;
-    width: 123vw;
-    min-width: 177.77vh;
-    min-height: 115vh;
+    height: 120vh;
     z-index: -1;
   `,
   imageOuter: css`
     width: fit-content;
     height: fit-content;
     overflow: hidden;
-    @media ${Mq.sm} {
-      width: 20%;
+    @media ${Mq.xxl} {
+      width: 100%;
       height: auto;
     }
   `,
@@ -136,7 +138,8 @@ const sx = {
     height: ${height}px;
     overflow: hidden;
     transition: all 1s;
-    @media ${Mq.sm} {
+   
+    @media ${Mq.xxl} {
       width: 100%;
       height: auto;
       aspect-ratio : ${aspectRatio};

@@ -3,6 +3,13 @@ import { Dialog, List, ListItem, Stack, Typography } from "@mui/material";
 import { MobileMenuIcon } from "./MobileMenuIcon";
 import { css } from "@emotion/react";
 
+const MobileMenuModels = [
+  "홈으로",
+  "기술과 서비스",
+  "인사이트",
+  "메가존.디지털",
+];
+
 type MobileMenuType = {
   open: boolean;
   onClose: () => void;
@@ -12,12 +19,16 @@ export const MobileMenu = ({ open, onClose }: MobileMenuType) => {
   return (
     <Dialog css={sx.dialog} open={open} onClose={onClose} fullScreen>
       <Stack direction="row" css={sx.IconWrap}>
-        <MobileMenuIcon onClick={onClose} scrolled={false} />
+        <MobileMenuIcon onClick={onClose} scrolled={false} open={open} />
       </Stack>
       <List>
-        <ListItem>
-          <Typography color={Color.WhiteText}>홈으로</Typography>
-        </ListItem>
+        {MobileMenuModels.map((menu, index) => (
+          <ListItem key={index} sx={{ marginTop: "20px" }}>
+            <Typography color={Color.WhiteText} variant="h3">
+              {menu}
+            </Typography>
+          </ListItem>
+        ))}
       </List>
     </Dialog>
   );

@@ -2,7 +2,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 export enum ScreenType {
   xs = 376,
-  sm = 576, // Mobile
+  sm = 576, // isSmall
   md = 768, //isMedium
   lg = 1024, // isLarge
   xl = 1200, // Tablet

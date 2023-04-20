@@ -14,14 +14,13 @@ export const PcSlide = () => {
       <Swiper
         autoplay={{ delay: 0, disableOnInteraction: false }}
         speed={2000}
-        slidesPerView={"auto"}
+        slidesPerView={7}
         loop={true}
         spaceBetween={90}
         pagination={{
           clickable: true,
         }}
         modules={[Autoplay]}
-        className="mySwiper"
       >
         {partnersModels.map((it, index) => (
           <SwiperSlide key={index}>

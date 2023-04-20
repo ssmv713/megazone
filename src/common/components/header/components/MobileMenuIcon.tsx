@@ -4,21 +4,21 @@ import { useState } from "react";
 type MobileMenuIconType = {
   scrolled: boolean;
   onClick: () => void;
+  open: boolean;
 };
 
-export const MobileMenuIcon = ({ scrolled, onClick }: MobileMenuIconType) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const handleClick = () => {
-    setIsClicked(!isClicked);
-  };
+export const MobileMenuIcon = ({
+  scrolled,
+  onClick,
+  open,
+}: MobileMenuIconType) => {
   return (
     <ul
       css={sx.button(scrolled)}
       onClick={() => {
-        handleClick();
         onClick();
       }}
-      className={isClicked ? "clicked" : ""}
+      className={open ? "clicked" : ""}
     >
       <li></li>
       <li></li>

@@ -16,7 +16,7 @@ export const baseTypographyOptions: TypographyOptions = {
   h2: {
     fontSize: "46px", //100
     fontWeight: "700",
-    "@media (max-width: 576px)": {
+    "@media (max-width: 1024px)": {
       fontSize: "28px !important",
     },
   },

@@ -20,7 +20,6 @@ export const MobileSlide = () => {
           clickable: true,
         }}
         modules={[Autoplay]}
-        className="mySwiper"
       >
         {mobile_partnersModels.map((img, index) => (
           <SwiperSlide key={index}>
