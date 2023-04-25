@@ -6,50 +6,68 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 import { swiperModels } from "./models/swiperModels";
+import { Mq, useCustomMediaQuery } from "@/common/theme/screen";
+import { MobileText } from "./components/MobileText";
 
 export const BannerSection = () => {
+  const { isLarge, isSmall } = useCustomMediaQuery();
   return (
     <div css={sx.root}>
       <Stack css={sx.inner}>
-        <Stack>
-          <Stack direction="row">
-            <Typography fontSize="68px !important" color={Color.WhiteText}>
-              {"메가존.디지털 "}
-            </Typography>
-            <div css={sx.underline}>
-              <Swiper
-                direction={"vertical"}
-                slidesPerView={1}
-                spaceBetween={30}
-                mousewheel={true}
-                className="mySwiper"
-                loop={true}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
-                modules={[Autoplay]}
+        {isSmall ? (
+          <MobileText />
+        ) : (
+          <Stack>
+            <Stack direction="row">
+              <Typography
+                fontSize={isLarge ? "28px !important" : "68px !important"}
+                color={Color.WhiteText}
               >
-                {swiperModels.map((text, index) => (
-                  <SwiperSlide key={index}>
-                    <Typography
-                      fontSize="68px !important"
-                      color={Color.blueText}
-                    >
-                      {text}
-                    </Typography>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-            <Typography fontSize="68px !important" color={Color.WhiteText}>
-              {" 는"}
+                {"메가존.디지털 "}
+              </Typography>
+              <div css={sx.underline}>
+                <Swiper
+                  direction={"vertical"}
+                  slidesPerView={1}
+                  spaceBetween={30}
+                  mousewheel={true}
+                  className="mySwiper"
+                  loop={true}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
+                  modules={[Autoplay]}
+                >
+                  {swiperModels.map((text, index) => (
+                    <SwiperSlide key={index}>
+                      <Typography
+                        fontSize={
+                          isLarge ? "28px !important" : "68px !important"
+                        }
+                        color={Color.blueText}
+                      >
+                        {text}
+                      </Typography>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+              <Typography
+                fontSize={isLarge ? "28px !important" : "68px !important"}
+                color={Color.WhiteText}
+              >
+                {" 는"}
+              </Typography>
+            </Stack>
+            <Typography
+              fontSize={isLarge ? "28px !important" : "68px !important"}
+              color={Color.WhiteText}
+            >
+              {"놀라운 여정을 함께 할 동료를 기다립니다."}
             </Typography>
           </Stack>
-          <Typography fontSize="68px !important" color={Color.WhiteText}>
-            {"놀라운 여정을 함께 할 동료를 기다립니다."}
-          </Typography>
-        </Stack>
+        )}
 
         <Link href="#!">
           <Button css={sx.button}>
@@ -66,7 +84,7 @@ export const BannerSection = () => {
 const sx = {
   root: css`
     width: 100%;
-    height: 635px;
+    padding: 100px 0;
     background-image: url(/assets/images/background.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -75,6 +93,9 @@ const sx = {
     align-items: center;
     .swiper {
       height: 100px;
+      @media ${Mq.lg} {
+        transform: translateY(10px);
+      }
     }
     .swiper-slide {
       height: 100px !important;
@@ -87,6 +108,10 @@ const sx = {
   inner: css`
     max-width: 1430px;
     margin: 0 auto;
+    @media ${Mq.lg} {
+      width: 100%;
+      margin-left: 30px;
+    }
   `,
   underline: css`
     width: 400px;
@@ -95,6 +120,11 @@ const sx = {
     transform: translateY(-23px);
     height: 110px;
     overflow: hidden;
+    @media ${Mq.lg} {
+      width: 180px;
+      height: 60px;
+      border-bottom: solid 2px #fff;
+    }
   `,
   button: css`
     width: 202px;

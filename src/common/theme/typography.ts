@@ -22,6 +22,9 @@ export const baseTypographyOptions: TypographyOptions = {
   },
   h3: {
     fontSize: "36px",
+    "@media (max-width: 1024px)": {
+      fontSize: "22px !important",
+    },
   },
   h4: {
     fontSize: "32px", //60
@@ -50,6 +53,10 @@ export const baseTypographyOptions: TypographyOptions = {
   body2: {
     fontSize: "18px", //40
     fontWeight: "600",
+    "@media (max-width:1024px)": {
+      fontSize: "15px !important",
+      fontWeight: "400",
+    },
   },
 };
 

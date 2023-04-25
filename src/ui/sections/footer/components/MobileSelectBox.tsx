@@ -7,7 +7,7 @@ import { familysiteModels } from "../models/familysiteModels";
 import Link from "next/link";
 import { Color } from "@/common/theme/colors";
 
-export const SelectBox = () => {
+export const MobileSelectBox = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -57,7 +57,7 @@ export const SelectBox = () => {
 
 const sx = {
   selectBox: (isOpen: boolean) => css`
-    width: 279px;
+    width: 100%;
 
     position: relative;
     /* border: solid 1px #333; */
@@ -69,12 +69,12 @@ const sx = {
     padding: 16px 20px;
   `,
   arrow: (isOpen: boolean) => css`
-    transform: ${isOpen ? "scaleY(-1)" : " "};
+    transform: ${isOpen ? "" : " scaleY(-1)"};
     transition: all 0.6s;
   `,
   nav: css`
     position: absolute;
-    bottom: 57px;
+    bottom: -304px;
     left: 0;
     background: #333;
     width: 100%;
@@ -86,8 +86,8 @@ const sx = {
     & li {
       padding: 0 20px;
       font-size: 0;
-      &:last-child a {
-        border-bottom: solid 1px #666;
+      &:first-child a {
+        border-top: solid 1px #666;
       }
     }
   `,
