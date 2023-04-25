@@ -12,7 +12,7 @@ import { MobileSlide } from "./components/MobileSlide";
 import { PcSlide } from "./components/PcSlide";
 
 export const PartnersSection = () => {
-  const { isSmall } = useCustomMediaQuery();
+  const { isSmall, isLarge } = useCustomMediaQuery();
   return (
     <Stack css={sx.root}>
       <Stack css={sx.textWrap}>
@@ -28,7 +28,7 @@ export const PartnersSection = () => {
           }
         </Typography>
       </Stack>
-      <div css={sx.swiperWrap}>{isSmall ? <MobileSlide /> : <PcSlide />}</div>
+      <div css={sx.swiperWrap}>{isLarge ? <MobileSlide /> : <PcSlide />}</div>
     </Stack>
   );
 };

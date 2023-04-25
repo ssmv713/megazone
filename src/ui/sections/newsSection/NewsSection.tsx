@@ -1,16 +1,20 @@
 import { Color } from "@/common/theme/colors";
 import { Stack, Typography } from "@mui/material";
-import arrow_right from "@/assets/icons/arrow_right_gray.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Image from "next/image";
 import { css } from "@emotion/react";
 import Link from "next/link";
 import { newsModels } from "./model/newsModels";
-import { it } from "node:test";
 import { Mq, useCustomMediaQuery } from "@/common/theme/screen";
 import { NewsSlide } from "./components/NewsSlide";
+import { useEffect } from "react";
 
 export const NewsSection = () => {
   const { isLaptop, isSmall } = useCustomMediaQuery();
+  useEffect(() => {
+    AOS.init();
+  });
   return (
     <div css={sx.root}>
       <Stack css={sx.inner}>
@@ -41,7 +45,14 @@ export const NewsSection = () => {
             sx={{ width: "100%" }}
           >
             {newsModels.map((it, index) => (
-              <Link href="#!" key={index} css={sx.newsLink}>
+              <Link
+                href="#!"
+                key={index}
+                css={sx.newsLink}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                data-aos-easing="ease-in-sine"
+              >
                 <Stack css={sx.newsCard}>
                   {isLaptop ? (
                     <div css={sx.newsImage}>

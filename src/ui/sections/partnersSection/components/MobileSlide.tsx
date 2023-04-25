@@ -6,14 +6,16 @@ import Image from "next/image";
 import "swiper/css/pagination";
 import { Autoplay } from "swiper";
 import { mobile_partnersModels } from "../models/mobile_partnersModels";
+import { useCustomMediaQuery } from "@/common/theme/screen";
 
 export const MobileSlide = () => {
+  const { isMedium, isSmall } = useCustomMediaQuery();
   return (
     <div css={sx.root}>
       <Swiper
         autoplay={{ delay: 0, disableOnInteraction: false }}
         speed={2000}
-        slidesPerView={"auto"}
+        slidesPerView={isSmall ? 3 : isMedium ? 5 : 7}
         loop={true}
         spaceBetween={10}
         pagination={{

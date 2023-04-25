@@ -9,12 +9,13 @@ import { Mq, useCustomMediaQuery } from "@/common/theme/screen";
 import { partnersModels } from "../models/partnersModels";
 
 export const PcSlide = () => {
+  const { isLaptop } = useCustomMediaQuery();
   return (
     <div css={sx.root}>
       <Swiper
         autoplay={{ delay: 0, disableOnInteraction: false }}
         speed={2000}
-        slidesPerView={7}
+        slidesPerView={isLaptop ? 5 : 7}
         loop={true}
         spaceBetween={90}
         pagination={{
@@ -45,7 +46,7 @@ const sx = {
       /* transition: all 1s; */
     }
     .swiper-slide {
-      width: fit-content;
+      /* width: fit-content; */
     }
   `,
 };

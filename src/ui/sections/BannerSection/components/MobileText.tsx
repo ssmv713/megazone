@@ -16,7 +16,7 @@ export const MobileText = () => {
           fontSize={isLarge ? "28px !important" : "68px !important"}
           color={Color.WhiteText}
         >
-          {"메가존..디지털 "}
+          {"메가존.디지털 "}
         </Typography>
 
         <Stack direction="row" mt="15px">
